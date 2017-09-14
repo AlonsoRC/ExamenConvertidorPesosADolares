@@ -14,14 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
-/**
- * 
- * Interfaz para nuestra calculadora cientifica
- * 
- * @author:  Alonso 
- * @version:  1.0 
- * 
- */
+
 public class Convertidor extends JFrame {
 
 	
