@@ -1,5 +1,5 @@
 
-package edu.ipn.cecyt9.calculadora;
+package Convertidor;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -7,10 +7,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.JButton;
-import javax.swing.JButton;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -21,44 +18,33 @@ import javax.swing.border.EmptyBorder;
  * 
  * Interfaz para nuestra calculadora cientifica
  * 
- * @author:  emmanuel 
+ * @author:  Alonso 
  * @version:  1.0 
  * 
  */
-public class Calculadora extends JFrame {
+public class Convertidor extends JFrame {
 
-	/**
-	 * generado
-	 */
+	
 	private static final long serialVersionUID = 1583724102189855698L;
 
-	/** numero tecleado */
 	JTextField pantalla;
 
-	/** guarda el resultado de la operacion anterior o el número tecleado */
 	double resultado;
 
         double resultado2;
-	/** para guardar la operacion a realizar */
 	String operacion;
 
-	/** Los paneles donde colocaremos los botones */
 	JPanel panelNumeros, panelOperaciones;
 
-	/** Indica si estamos iniciando o no una operación */
 	boolean nuevaOperacion = true;
 
-	/**
-	 * Constructor. Crea los botones y componentes de la calculadora
-	 */
-	public Calculadora() {
+	public Convertidor() {
 		super();
 		setSize(250, 300);
 		setTitle("Calculadora Simple");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setResizable(false);
 
-		// Vamos a dibujar sobre el panel
 		JPanel panel = (JPanel) this.getContentPane();
 		panel.setLayout(new BorderLayout());
 
@@ -86,16 +72,7 @@ public class Calculadora extends JFrame {
 		panelOperaciones.setLayout(new GridLayout(6, 1));
 		panelOperaciones.setBorder(new EmptyBorder(4, 4, 4, 4));
 
-		nuevoBotonOperacion("+");
-		nuevoBotonOperacion("-");
-		nuevoBotonOperacion("*");
-		nuevoBotonOperacion("/");
-                nuevoBotonOperacion("√");
-                nuevoBotonOperacion("^2");
-                nuevoBotonOperacion("^x");
-                nuevoBotonOperacion("sin(");
-                nuevoBotonOperacion("cos(");
-                nuevoBotonOperacion("tan(");
+                nuevoBotonOperacion("Convertidor");
                 nuevoBotonOperacion("=");
 		nuevoBotonOperacion("CE");
 
@@ -105,13 +82,7 @@ public class Calculadora extends JFrame {
 		validate();
 	}
 
-	/**
-	 * Crea un boton del teclado numérico y enlaza sus eventos con el listener
-	 * correspondiente
-	 * 
-	 * @param digito
-	 *            boton a crear
-	 */
+	
 	private void nuevoBotonNumerico(String digito) {
 		JButton btn = new JButton();
 		btn.setText(digito);
@@ -127,11 +98,6 @@ public class Calculadora extends JFrame {
 		panelNumeros.add(btn);
 	}
 
-	/**
-	 * Crea un botón de operacion y lo enlaza con sus eventos.
-	 * 
-	 * @param operacion
-	 */
 	private void nuevoBotonOperacion(String operacion) {
 		JButton btn = new JButton(operacion);
 		btn.setForeground(Color.RED);
@@ -148,12 +114,7 @@ public class Calculadora extends JFrame {
 		panelOperaciones.add(btn);
 	}
 
-	/**
-	 * Gestiona las pulsaciones de teclas numéricas
-	 * 
-	 * @param digito
-	 *            tecla pulsada
-	 */
+	
 	private void numeroPulsado(String digito) {
 		if (pantalla.getText().equals("0") || nuevaOperacion) {
 			pantalla.setText(digito);
@@ -163,11 +124,7 @@ public class Calculadora extends JFrame {
 		nuevaOperacion = false;
 	}
 
-	/**
-	 * Gestiona el gestiona las pulsaciones de teclas de operación
-	 * 
-	 * @param tecla
-	 */
+	
 	private void operacionPulsado(String tecla) {
 		if (tecla.equals("=")) {
 			calcularResultado();
@@ -187,38 +144,13 @@ public class Calculadora extends JFrame {
 		nuevaOperacion = true;
 	}
 
-	/**
-	 * Calcula el resultado y lo muestra por pantalla
-	 */
+	
 	private void calcularResultado() {
 		  Double i=new Double(pantalla.getText());
-         /**
-	 *  Operaciones que realiza la calculadora 
-	 */   
-		if (operacion.equals("+")) { //suma
-			resultado += new Double(pantalla.getText());
-		} else if (operacion.equals("-")) { //resta
-			resultado -= new Double(pantalla.getText());
-		} else if (operacion.equals("/")) { //division
-			resultado /= new Double(pantalla.getText());
-		} else if (operacion.equals("*")) { //multiplicacion
-			resultado *= new Double(pantalla.getText());
-		} else if (operacion.equals("√")) { //raiz cuadrada
-                        resultado= Math.sqrt(i);
-                } else if (operacion.equals("sin(")){ //angulo seno
-                        Double i2=i*Math.PI/180;
-                        resultado=Math.sin(i2);
-                }else if (operacion.equals("cos(")){ //angulo coseno
-                        Double i2=i*Math.PI/180;
-                        resultado=Math.cos(i2);
-                }else if (operacion.equals("tan(")){ //angulo tangente
-                        Double i2=i*Math.PI/180;
-                        resultado=Math.tan(i2);
-                }else if (operacion.equals("^2")){  //elevado a la 2
-                        resultado=(int) Math.pow(i, 2);
-                }else if (operacion.equals("^x")){ //elevado a la x
-                        resultado=(int) Math.pow(resultado,i);
-                }
+         
+		if (operacion.equals("Convertidor")) { 
+			resultado = i*.17;
+		} 
 		pantalla.setText("" + resultado);
 		operacion = "";
 	}
